@@ -214,8 +214,8 @@
     ],
     "publish": {
       "provider": "github",
-      "owner": "Phyris",
-      "repo": "Phyris"
+      "owner": "josh-logue",
+      "repo": "phyris"
     }
   },
   "devEngines": {
