@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { getThings, loadNote } from '../utils';
 import Note from './Note';
 import './styles.css';
 
 function Details(props: any) {
+  const [update, setUpdate] = useState(true);
   const details = [];
   const things = getThings(props.cat);
   const keys = Object.keys(things);
@@ -21,13 +23,15 @@ function Details(props: any) {
       </div>,
     );
   }
-  const defaultNote = loadNote(keys[index]);
-  return (
-    <div className="details">
-      {details}
-      <Note value={defaultNote} thing={keys[index]} />
-    </div>
+  let defaultNote = loadNote(keys[index]);
+  const handleInput = (input: string) => {
+    defaultNote = input;
+    setUpdate(!update);
+  };
+  details.push(
+    <Note value={defaultNote} thing={keys[index]} callback={handleInput} />,
   );
+  return <div className="details">{details}</div>;
 }
 
 export default Details;

@@ -23,6 +23,7 @@ function Note(props: any) {
           type="button"
           onClick={() => {
             saveNote(props.thing, value);
+            props.callback(value);
           }}
         >
           Submit
