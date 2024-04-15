@@ -31,3 +31,4 @@ npm-debug.log.*
 *lock.json
 /.vs
 /release
+*.pfx
