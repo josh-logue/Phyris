@@ -3,6 +3,7 @@ import Regions from './Selectors/Data/Regions';
 import People from './Selectors/Data/People';
 import Events from './Selectors/Data/Events';
 import Factions from './Selectors/Data/Factions';
+import Gods from './Selectors/Data/Gods';
 
 const defaultNote = 'Enter Notes Here';
 
@@ -38,6 +39,9 @@ export function getThings(index: Number) {
       break;
     case 4:
       things = Events;
+      break;
+    case 5:
+      things = Gods;
       break;
     default:
   }

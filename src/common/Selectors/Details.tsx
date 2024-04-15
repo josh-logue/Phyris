@@ -15,16 +15,46 @@ function Details(props: any) {
   const choice = things[keys[index]];
   const fields = Object.keys(choice);
   details.push(
-    <div className="header">
+    <div key="header" className="header">
       <p>{keys[index]}</p>
     </div>,
   );
   // eslint-disable-next-line no-plusplus
   for (let i = 0; i < fields.length; i++) {
-    const value = `${fields[i]}: ${choice[fields[i]]}`;
+    const label = fields[i];
+    const content = choice[fields[i]];
+    let parsed;
+    const match = /\r|\n/.exec(content);
+    if (match) {
+      parsed = content.split('\n');
+    } else {
+      parsed = content;
+    }
+    let labelBool;
+    if (props.cat > 0) {
+      labelBool = true;
+    } else {
+      labelBool = false;
+    }
+    const passedContent = [];
+    if (typeof parsed === 'string') {
+      const initial = `${labelBool ? label : ''}: ${parsed}`;
+      passedContent.push(<p key="single">{initial}</p>);
+    } else {
+      const initial = `${labelBool ? label : ''}: ${parsed[0]}`;
+      passedContent.push(<p key="list-start">{initial}</p>);
+      // eslint-disable-next-line no-plusplus
+      for (let j = 1; j < parsed.length; j++) {
+        passedContent.push(
+          <p key={`${i}-${j}`} className="list-item">
+            &#x2022; {parsed[j]}
+          </p>,
+        );
+      }
+    }
     details.push(
       <div className="field" key={fields[i]}>
-        <p>{value}</p>
+        {passedContent}
       </div>,
     );
   }

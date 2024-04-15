@@ -39,7 +39,6 @@ const Cities = {
       "A small whaling town on the eastern coast of Celasaan, on the northern tip of Grief's Fingers.",
   },
   Fallview: {
-    Pronunciation: 'Fallview',
     Faction: 'Grafken',
     Population: '~10,000',
     Location: 'Central Northern Celasaan',

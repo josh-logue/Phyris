@@ -78,3 +78,7 @@
 .header {
   font-weight: bold;
 }
+
+.list-item {
+  padding-left: 20px;
+}
