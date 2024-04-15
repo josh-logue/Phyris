@@ -48,3 +48,31 @@ export function getThings(index: Number) {
 
   return things;
 }
+
+function makeKey(name: string) {
+  return `_${name}`;
+}
+
+export function getAllPersons() {
+  return window.electron.store.get('Persons') ?? [];
+}
+
+export function getPersonDetails(key: string) {
+  const newKey = makeKey(key);
+  return window.electron.store.get(newKey);
+}
+
+export function savePerson(name: string, note: string) {
+  const key = makeKey(name);
+  window.electron.store.set(key, note);
+  const persons = window.electron.store.get('Persons') ?? [];
+  if (persons.indexOf(name) < 0) {
+    persons.push(name);
+    window.electron.store.set('Persons', persons);
+  }
+}
+
+export function deletePerson(name: string) {
+  const key = makeKey(name);
+  window.electron.store.delete(key);
+}

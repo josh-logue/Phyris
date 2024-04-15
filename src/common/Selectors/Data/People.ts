@@ -1,6 +1,3 @@
-const People = {
-  Sanguineous: {},
-  'The Matron': {},
-};
+const People = 'Work in Progress';
 
 export default People;

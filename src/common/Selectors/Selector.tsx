@@ -1,10 +1,20 @@
 /* eslint-disable no-plusplus */
 import { getThings } from '../utils';
 import Categories from './Data/Categories';
+import PersonList from './PersonList';
 import './styles.css';
 
 export function Thing(props: { cat: Number; callback: (i: any) => void }) {
   const tab = [];
+
+  // People
+  if (props.cat === 3) {
+    const handleChoice = (e: any) => {
+      props.callback(e);
+    };
+
+    return <PersonList callback={handleChoice} />;
+  }
 
   const things = getThings(props.cat);
 

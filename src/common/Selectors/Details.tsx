@@ -2,10 +2,24 @@ import { useState } from 'react';
 import { getThings, loadNote } from '../utils';
 import Note from './Note';
 import './styles.css';
+import Person from './Persons';
 
 function Details(props: any) {
   const [update, setUpdate] = useState(true);
   const details = [];
+  // People
+  let initialThing = props.thing;
+  if (props.cat === 3 || typeof props.thing === 'string') {
+    const forceUpdate = (input: string) => {
+      initialThing = input;
+      props.callback();
+      // setUpdate(!update);
+    };
+    if (props.thing === 'New') {
+      initialThing = props.thing;
+    }
+    return <Person selection={initialThing} callback={forceUpdate} />;
+  }
   const things = getThings(props.cat);
   const keys = Object.keys(things);
   let index = props.thing;
@@ -31,17 +45,18 @@ function Details(props: any) {
       parsed = content;
     }
     let labelBool;
+    // Not Factions
     if (props.cat > 0) {
-      labelBool = true;
+      labelBool = `${label}: `;
     } else {
-      labelBool = false;
+      labelBool = ``;
     }
     const passedContent = [];
     if (typeof parsed === 'string') {
-      const initial = `${labelBool ? label : ''}: ${parsed}`;
+      const initial = `${labelBool}${parsed}`;
       passedContent.push(<p key="single">{initial}</p>);
     } else {
-      const initial = `${labelBool ? label : ''}: ${parsed[0]}`;
+      const initial = `${labelBool}${parsed[0]}`;
       passedContent.push(<p key="list-start">{initial}</p>);
       // eslint-disable-next-line no-plusplus
       for (let j = 1; j < parsed.length; j++) {

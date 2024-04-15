@@ -2,18 +2,18 @@ const Regions = {
   Ianfuil: {
     Pronunciation: 'yan-FWEEL',
     Location: 'Central Celasaan',
-    'Description:':
+    Description:
       'A large basin is situated atop a series of cliffs in central Grafken, overlooked by the Grafken stronghold Fallview. Water flows from the northern ice melt down the Fuil river and through the Stone Forest before filling this basin and spilling over a virstone to create the Ianfuil Falls and Ianfuil Lake at its base. The flow continues into the Daisreach, through the Noafin Plains, past Termina and into the L’rorasic Confluence.',
   },
   'Naofin Plains': {
     Pronunciation: 'NOW-fin',
     Location: 'Central - Western Celasaan',
-    'Description:':
+    Description:
       'Flat expanses of land in central to eastern Grafken. Divided by the Daisreach river.',
   },
   "Grief's Fingers": {
     Location: 'Western coast of central Celasaan',
-    'Description:':
+    Description:
       "A swamp on Celasaan's eastern coast. Connects Contemplation to the Cradle of Timnel via the twin rivers, Grief's Tears.",
   },
   'Stone Forest': {
@@ -47,7 +47,7 @@ const Regions = {
     Pronunciation: 'IH-mell',
     Location: 'Southeast Barbaric Wastes - Southern Celasaan',
     Description:
-      'A lush copse of bushes, brambles, and most notably: trees. Not often refered to by name (if respectful), reverently referenced as simply, the Cradle. Sacred to Simyn ancestors, the city has continued to train and post guardians, forbidden the Cradle to most.',
+      'A lush copse of bushes, brambles, and most notably: trees. Not often refered to by name (if respectful), reverently referenced as simply: the Cradle. Sacred to Simyn ancestors, the city has continued to train and post guardians, forbidding the Cradle to most.',
   },
   'Utaerol Desert': {
     Pronunciation: 'you-TAY-roll',

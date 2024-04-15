@@ -45,6 +45,12 @@ ipcMain.on('electron-store-get', async (event, val) => {
 ipcMain.on('electron-store-set', async (event, key, val) => {
   store.set(key, val);
 });
+ipcMain.on('electron-store-delete', async (event, key) => {
+  store.delete(key);
+});
+ipcMain.on('electron-store-has', async (event, key) => {
+  store.has(key);
+});
 
 const isDebug =
   process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true';
