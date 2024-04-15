@@ -14,6 +14,11 @@ function Details(props: any) {
   }
   const choice = things[keys[index]];
   const fields = Object.keys(choice);
+  details.push(
+    <div className="header">
+      <p>{keys[index]}</p>
+    </div>,
+  );
   // eslint-disable-next-line no-plusplus
   for (let i = 0; i < fields.length; i++) {
     const value = `${fields[i]}: ${choice[fields[i]]}`;
@@ -29,7 +34,12 @@ function Details(props: any) {
     setUpdate(!update);
   };
   details.push(
-    <Note value={defaultNote} thing={keys[index]} callback={handleInput} />,
+    <Note
+      key={keys[index]}
+      value={defaultNote}
+      thing={keys[index]}
+      callback={handleInput}
+    />,
   );
   return <div className="details">{details}</div>;
 }
