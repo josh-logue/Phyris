@@ -1,6 +1,3 @@
-export const Categories = [
-    "Cities",
-    "Regions",
-    "People",
-    "Events",
-]
+const Categories = ['Factions', 'Cities', 'Regions', 'People', 'Events'];
+
+export default Categories;

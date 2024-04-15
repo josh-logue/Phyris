@@ -2,6 +2,7 @@ import Cities from './Selectors/Data/Cities';
 import Regions from './Selectors/Data/Regions';
 import People from './Selectors/Data/People';
 import Events from './Selectors/Data/Events';
+import Factions from './Selectors/Data/Factions';
 
 const defaultNote = 'Enter Notes Here';
 
@@ -23,16 +24,19 @@ export function loadNote(thing: string): string {
 }
 
 export function getThings(index: Number) {
-  let things: any = Cities;
+  let things: any = Factions;
 
   switch (index) {
     case 1:
-      things = Regions;
+      things = Cities;
       break;
     case 2:
-      things = People;
+      things = Regions;
       break;
     case 3:
+      things = People;
+      break;
+    case 4:
       things = Events;
       break;
     default:

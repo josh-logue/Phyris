@@ -1,6 +1,6 @@
 /* eslint-disable no-plusplus */
 import { getThings } from '../utils';
-import { Categories } from './Data/Categories';
+import Categories from './Data/Categories';
 import './styles.css';
 
 export function Thing(props: { cat: Number; callback: (i: any) => void }) {
