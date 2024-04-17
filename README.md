@@ -11,7 +11,6 @@ The mythical trove of knowledge, magic, and lore on d'Hahn.
 - A spoiler free encyclopedia of Celasaan events, locations, and more.
 - A section to insert characters you meet.
 - Mediocre React code.
-- Terrible HTML and CSS.
 
 
 ## Acknowledgements
