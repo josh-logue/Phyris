@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { getThings, loadNote } from '../utils';
+import { getThings, gmMode, loadNote } from '../utils';
 import Note from './Note';
 import './styles.css';
 import Person from './Persons';
+import { NPC } from './NpcList';
 
 function Details(props: any) {
   const [update, setUpdate] = useState(true);
@@ -10,6 +11,9 @@ function Details(props: any) {
   // People
   let initialThing = props.thing;
   if (props.cat === 3 || typeof props.thing === 'string') {
+    if (gmMode) {
+      return <NPC name={initialThing} />;
+    }
     const forceUpdate = (input: string) => {
       initialThing = input;
       props.callback();

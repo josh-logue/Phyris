@@ -1,10 +1,16 @@
 /* eslint-disable no-plusplus */
-import { getThings } from '../utils';
+import { getThings, gmMode } from '../utils';
 import Categories from './Data/Categories';
+import { NpcList } from './NpcList';
 import PersonList from './PersonList';
 import './styles.css';
 
-export function Thing(props: { cat: Number; callback: (i: any) => void }) {
+export function Thing(props: {
+  cat: Number;
+  callback: (i: any) => void;
+  faction: string;
+  location: string;
+}) {
   const tab = [];
 
   // People
@@ -12,6 +18,16 @@ export function Thing(props: { cat: Number; callback: (i: any) => void }) {
     const handleChoice = (e: any) => {
       props.callback(e);
     };
+
+    if (gmMode) {
+      return (
+        <NpcList
+          callback={handleChoice}
+          faction={props.faction}
+          location={props.location}
+        />
+      );
+    }
 
     return <PersonList callback={handleChoice} />;
   }

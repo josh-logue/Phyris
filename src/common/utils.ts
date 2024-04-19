@@ -76,3 +76,5 @@ export function deletePerson(name: string) {
   const key = makeKey(name);
   window.electron.store.delete(key);
 }
+
+export const gmMode = true;
