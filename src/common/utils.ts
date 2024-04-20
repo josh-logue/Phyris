@@ -1,9 +1,9 @@
-import Cities from './Selectors/Data/Cities';
-import Regions from './Selectors/Data/Regions';
-import People from './Selectors/Data/People';
-import Events from './Selectors/Data/Events';
-import Factions from './Selectors/Data/Factions';
-import Gods from './Selectors/Data/Gods';
+import Cities from '../../data/Cities';
+import Regions from '../../data/Regions';
+import People from '../../data/People';
+import Events from '../../data/Events';
+import Factions from '../../data/Factions';
+import Gods from '../../data/Gods';
 
 const defaultNote = 'Enter Notes Here';
 
@@ -78,3 +78,16 @@ export function deletePerson(name: string) {
 }
 
 export const gmMode = true;
+
+export function resize() {
+  const detailsContainer = window.document.getElementById('detailsContainer');
+  const hTab = window.document.getElementsByClassName('hTab')[0];
+  const vTab = window.document.getElementsByClassName('vTab')[0];
+  if (detailsContainer !== null && vTab && hTab) {
+    const rect = (
+      hTab.getBoundingClientRect().width - vTab.getBoundingClientRect().width
+    ).toFixed(0);
+
+    detailsContainer.style.width = `${rect}px`;
+  }
+}

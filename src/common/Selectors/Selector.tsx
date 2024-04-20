@@ -1,6 +1,6 @@
 /* eslint-disable no-plusplus */
-import { getThings, gmMode } from '../utils';
-import Categories from './Data/Categories';
+import { getThings } from '../utils';
+import Categories from '../../../data/Categories';
 import { NpcList } from './NpcList';
 import PersonList from './PersonList';
 import './styles.css';
@@ -19,7 +19,7 @@ export function Thing(props: {
       props.callback(e);
     };
 
-    if (gmMode) {
+    if (process.env.GM_MODE) {
       return (
         <NpcList
           callback={handleChoice}
@@ -33,8 +33,12 @@ export function Thing(props: {
   }
 
   const things = getThings(props.cat);
-
-  const keys = Object.keys(things);
+  let keys = Object.keys(things);
+  if (props.cat !== 4) {
+    keys = keys.sort((a, b) => {
+      return a.localeCompare(b);
+    });
+  }
   for (let i = 0; i < keys.length; i++) {
     tab.push(
       <button

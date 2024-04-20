@@ -2,10 +2,10 @@
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
 import Select from 'react-select';
-import Factions from './Data/Factions';
-import Cities from './Data/Cities';
-import Regions from './Data/Regions';
-import npcArray from './Data/Npcs';
+import Factions from '../../../data/Factions';
+import Cities from '../../../data/Cities';
+import Regions from '../../../data/Regions';
+import npcArray from '../../../data/Npcs';
 
 interface sOption {
   value: string;
@@ -13,7 +13,7 @@ interface sOption {
 }
 
 export function NpcFilter(props: any) {
-  const show = props.show ? 'block' : 'none';
+  const show = props.show ? 'flex' : 'none';
   const defaultFaction = { value: '', label: 'No Faction Filter' };
   const defaultLocation = { value: '', label: 'No Location Filter' };
   const factions: sOption[] = [defaultFaction];
@@ -21,6 +21,8 @@ export function NpcFilter(props: any) {
   for (const faction in Factions) {
     factions.push({ value: faction, label: faction });
   }
+  factions.push({ value: 'The Grasping', label: 'The Grasping' });
+  factions.push({ value: 'Harbingers', label: 'Harbingers' });
   for (const location in Cities) {
     locations.push({ value: location, label: location });
   }
@@ -36,13 +38,15 @@ export function NpcFilter(props: any) {
   };
 
   return (
-    <div style={{ display: show }}>
+    <div style={{ display: show }} className="selector">
       <Select
+        className="dropdown"
         options={factions}
         onChange={newFaction}
         defaultValue={defaultFaction}
       />
       <Select
+        className="dropdown"
         options={locations}
         onChange={newLocation}
         defaultValue={defaultLocation}
@@ -61,14 +65,17 @@ export function NpcList(props: any) {
   } else {
     list = npcArray.filter((individual) => {
       const factionMatching =
-        individual.details.faction.includes(props.faction) ||
+        individual.details.Faction.includes(props.faction) ||
         props.faction === '';
       const locationMatching =
-        individual.details.location.includes(props.location) ||
+        individual.details.Location.includes(props.location) ||
         props.location === '';
       return factionMatching && locationMatching;
     });
   }
+  list = list.sort((a, b) => {
+    return a.name.localeCompare(b.name);
+  });
   for (let i = 0; i < list.length; i++) {
     if (list[i].name === '') {
       // eslint-disable-next-line no-continue

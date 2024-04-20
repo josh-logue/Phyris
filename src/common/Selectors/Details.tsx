@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { getThings, gmMode, loadNote } from '../utils';
+import { getThings, loadNote } from '../utils';
 import Note from './Note';
 import './styles.css';
 import Person from './Persons';
@@ -11,7 +11,7 @@ function Details(props: any) {
   // People
   let initialThing = props.thing;
   if (props.cat === 3 || typeof props.thing === 'string') {
-    if (gmMode) {
+    if (process.env.GM_MODE) {
       return <NPC name={initialThing} />;
     }
     const forceUpdate = (input: string) => {
