@@ -33,12 +33,7 @@ export function Thing(props: {
   }
 
   const things = getThings(props.cat);
-  let keys = Object.keys(things);
-  if (props.cat !== 4) {
-    keys = keys.sort((a, b) => {
-      return a.localeCompare(b);
-    });
-  }
+  const keys = Object.keys(things);
   for (let i = 0; i < keys.length; i++) {
     tab.push(
       <button
