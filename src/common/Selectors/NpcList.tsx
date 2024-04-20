@@ -61,9 +61,11 @@ export function NpcList(props: any) {
   } else {
     list = npcArray.filter((individual) => {
       const factionMatching =
-        individual.details.faction === props.faction || props.faction === '';
+        individual.details.faction.includes(props.faction) ||
+        props.faction === '';
       const locationMatching =
-        individual.details.location === props.location || props.location === '';
+        individual.details.location.includes(props.location) ||
+        props.location === '';
       return factionMatching && locationMatching;
     });
   }
@@ -83,7 +85,12 @@ export function NpcList(props: any) {
       </button>,
     );
   }
-  return <div className="vTab">{tab}</div>;
+
+  return (
+    <div className="vTab" id="npcList">
+      {tab}
+    </div>
+  );
 }
 
 export function NPC(props: any) {
@@ -92,11 +99,19 @@ export function NPC(props: any) {
     return individual.name === props.name;
   });
   if (npc[0]) {
-    output.push(<div className="header">{props.name}</div>);
+    output.push(
+      <div key="name" className="header">
+        {props.name}
+      </div>,
+    );
     for (const elem in npc[0].details) {
       const value = `${elem}: ${npc[0].details[elem]}`;
-      output.push(<p>{value}</p>);
+      output.push(<p key={elem}>{value}</p>);
     }
-    return <div className="details">{output}</div>;
+    return (
+      <div className="details" id="npc">
+        {output}
+      </div>
+    );
   }
 }
