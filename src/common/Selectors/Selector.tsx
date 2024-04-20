@@ -1,10 +1,16 @@
 /* eslint-disable no-plusplus */
 import { getThings } from '../utils';
-import Categories from './Data/Categories';
+import Categories from '../../../data/Categories';
+import { NpcList } from './NpcList';
 import PersonList from './PersonList';
 import './styles.css';
 
-export function Thing(props: { cat: Number; callback: (i: any) => void }) {
+export function Thing(props: {
+  cat: Number;
+  callback: (i: any) => void;
+  faction: string;
+  location: string;
+}) {
   const tab = [];
 
   // People
@@ -13,12 +19,26 @@ export function Thing(props: { cat: Number; callback: (i: any) => void }) {
       props.callback(e);
     };
 
+    if (process.env.GM_MODE) {
+      return (
+        <NpcList
+          callback={handleChoice}
+          faction={props.faction}
+          location={props.location}
+        />
+      );
+    }
+
     return <PersonList callback={handleChoice} />;
   }
 
   const things = getThings(props.cat);
-
-  const keys = Object.keys(things);
+  let keys = Object.keys(things);
+  if (props.cat !== 4) {
+    keys = keys.sort((a, b) => {
+      return a.localeCompare(b);
+    });
+  }
   for (let i = 0; i < keys.length; i++) {
     tab.push(
       <button

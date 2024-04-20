@@ -2,6 +2,7 @@ import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 // import icon from '../../assets/icon.svg';
 // import './App.css';
 import Encyclopedia from '../common/Encyclopedia';
+import { resize } from '../common/utils';
 
 // function Hello() {
 //   return (
@@ -41,6 +42,7 @@ import Encyclopedia from '../common/Encyclopedia';
 // }
 
 export default function App() {
+  window.addEventListener('resize', resize);
   return (
     <Router>
       <Routes>
