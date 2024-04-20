@@ -21,7 +21,8 @@ The mythical trove of knowledge, magic, and lore on d'Hahn.
 
 ## Installation
 
-Use the installer, or clone the code and run it with npm.
+Use the installer, or ~~clone the code and run it with npm~~.
+No longer possible unless you supply your own data; but if you do:
 
 ```bash
   cd Phyris
